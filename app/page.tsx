@@ -1,6 +1,7 @@
+import Dashboard from "@/components/Dashboard";
 import LeadForm from "./LeadForm";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <LeadForm />
