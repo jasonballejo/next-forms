@@ -18,18 +18,19 @@ export default async function page() {
     await getUsers();
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex sm:flex-row flex-col gap-5">
-        {data.map((user) => (
-          <Card key={user.id} {...user} />
-        ))}
-      </div>
-      <div className="flex justify-center items-center text-center">
+      <div className="flex flex-col justify-center items-center text-center">
+        <h1 className="font-bold text-2xl">Client Database</h1>
         <Link
-          className="text-white mt-4 text-center border rounded-[4px] bg-black py-4 px-10 hover:bg-gray-800"
+          className="text-white text-center border rounded-[4px] bg-black py-4 px-10 hover:bg-gray-800"
           href="/"
         >
           Submit Client
         </Link>
+      </div>
+      <div className="flex sm:flex-row flex-col gap-5">
+        {data.map((user) => (
+          <Card key={user.id} {...user} />
+        ))}
       </div>
     </div>
   );
