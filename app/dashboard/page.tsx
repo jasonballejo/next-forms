@@ -1,21 +1,28 @@
-import React from "react";
-import Dashboard from "@/components/Dashboard";
+"use client";
+import React, { useEffect, useState } from "react";
 import Card from "@/components/Card";
 import Link from "next/link";
+import prisma from "@/prisma/client";
+import { NextRequest } from "next/server";
 
 export const revalidate = 0;
 
-async function getUsers() {
-  const res = await fetch(`${process.env.BASE_URL}/api/getUsers`);
+export default function Dashboard() {
+  // const [users, setUsers] = useState([]);
 
-  if (!res.ok) {
-  }
-  return res.json();
-}
+  // async function getUsers() {
+  //   const res = await fetch(`/api/users`);
 
-export default async function page() {
-  const data: { id: number; name: string; number: string; address: string }[] =
-    await getUsers();
+  //   if (!res.ok) {
+  //   }
+  //   const data = await res.json();
+  //   setUsers(data);
+  // }
+
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-col justify-center items-center text-center">
@@ -27,11 +34,11 @@ export default async function page() {
           Submit Client
         </Link>
       </div>
-      <div className="flex sm:flex-row flex-col gap-5">
-        {data.map((user) => (
+      {/* <div className="flex sm:flex-row flex-col gap-5">
+        {users.map((user) => (
           <Card key={user.id} {...user} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
